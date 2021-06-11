@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Qué tramo horario es?</title>
+
+        <script
+            src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
+            defer
+        ></script>
+
+        <link
+            href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+            rel="stylesheet"
+        />
+        <style>
+          .text-large {
+            font-size: 14rem;
+          }
+        </style>
+        <script src="index.js"></script>
+    </head>
+
+    <body
+        x-data="app()"
+        class="font-mono"
+        :class="[slotColor(), textColor()]"
+    >
+        <div class="relative w-full">
+            <div class="absolute top-0 right-0 px-10 py-8">
+              <button 
+                class="w-20 h-10 rounded-full bg-white flex items-center transition duration-300 focus:outline-none shadow"
+                @click="toggleTheme()"
+              >
+                <div
+                    id="switch-toggle"
+                    class="w-12 h-12 relative rounded-full transition duration-500 transform p-1 text-white"
+                    :class="iconClasses()"
+                    x-html="toggleIcon()"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                </div>
+            </button>
+            </div>
+
+            <div class="flex justify-center h-screen text-center items-center p-4">
+              <div>
+                <div class="flex mx-auto justify-center items-center text-center">
+                  <img class="inline" :src="slotEmojiImage()" class="h-full" />
+                  <span class="text-large" x-text="currentSlot"></span>
+                </div>
+                <p class="text-6xl " x-text="slotDescription()"></p>
+                <p class="mt-8 text-4xl " x-text="slotWhen()"></p>
+              </div>
+            </div>
+        </div>
+    </body>
+
+    <script>
+        const date = new Date
+
+        let app = () => {
+            return {
+                currentSlot: currentTimeSlot(date),
+
+                slots: {
+                  valle: {
+                    description: "tramo más barato",
+                    when: "(de 0h a 8h a diario y todo el día los fines de semana)"
+                  },
+                  llano: {
+                    description: "tramo medio",
+                    when: "(de 8h a 10h, de 14h a 18h y de 22h a 24h)"
+                  },
+                  punta: {
+                    description: "tramo más caro",
+                    when: "(de 10h a 14h y de 18h a 22h)",
+                  },
+                },
+
+                emojis: {
+                  valle: "thumbs-up",
+                  llano: "shrug",
+                  punta: "no",
+                },
+
+                theme: {
+                  darkMode: darkMode(date.getHours()),
+
+                  light: {
+                    colors: {
+                      valle: "bg-green-200",
+                      llano: "bg-yellow-200",
+                      punta: "bg-red-300",
+
+                      text: "text-gray-700",
+                    },
+                    icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>`,
+                    iconClasses: "bg-yellow-500 -translate-x-2"
+                  },
+
+                  dark: {
+                    colors: {
+                      valle: "bg-green-800",
+                      llano: "bg-yellow-500",
+                      punta: "bg-red-800",
+
+                      text: "text-gray-50",
+                    },
+                    icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                    </svg>`,
+                    iconClasses: "bg-gray-700 translate-x-full"
+                  }
+                },
+
+                currentTheme() {
+                    return this.theme.darkMode ? "dark" : "light"
+                },
+
+                slotEmojiImage() {
+                  const slot = this.currentSlot
+                  const i = Math.floor(Math.random() * (slot == "valle" ? 5 : 17)) + 1
+
+                  return `images/${this.emojis[this.currentSlot]}-${i}.png`
+                },
+
+                slotDescription() {
+                  return this.slots[this.currentSlot].description
+                },
+
+                slotWhen() {
+                  return this.slots[this.currentSlot].when
+                },
+
+                slotColor() {
+                  return this.theme[this.currentTheme()].colors[this.currentSlot]
+                },
+
+                textColor() {
+                  return this.theme[this.currentTheme()].colors['text']
+                },
+
+                toggleIcon() {
+                  return this.theme[this.currentTheme()].icon
+                },
+
+                iconClasses() {
+                  return this.theme[this.currentTheme()].iconClasses
+                },
+
+                toggleTheme() {
+                  this.theme.darkMode = !this.theme.darkMode
+                },
+            };
+        };
+    </script>
+</html>

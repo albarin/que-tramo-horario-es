@@ -10,6 +10,7 @@
     <style>
         .text-large {
             font-size: 14rem;
+            line-height: 1;
         }
     </style>
     <script src="index.js"></script>
@@ -33,13 +34,13 @@
 
     <div class="flex justify-center h-screen text-center items-center p-4">
         <div>
-            <div class="flex mx-auto justify-center items-center text-center">
+            <div class="flex justify-center items-center text-center">
                 <img class="inline h-full" :src="slotEmojiImage()" alt="emoji"/>
                 <span class="text-large" x-text="currentSlot"></span>
             </div>
 
-            <p class="text-6xl" x-text="slotDescription()"></p>
-            <p class="mt-8 text-4xl" x-text="slotWhen()"></p>
+            <p class="mt-10 text-6xl" x-text="slotDescription()"></p>
+            <p class="mt-6 text-3xl" x-text="slotWhen()"></p>
         </div>
     </div>
 </div>

@@ -42,7 +42,8 @@
 <div class="relative w-full">
     <div class="absolute top-0 right-0 px-10 py-8">
         <button class="w-20 h-10 rounded-full bg-white flex items-center transition duration-300 focus:outline-none shadow"
-                @click="toggleTheme()">
+                @click="toggleTheme()"
+                aria-label="cambiar tema">
             <span id="switch-toggle"
                   class="w-12 h-12 relative rounded-full transition duration-500 transform p-1 text-white"
                   :class="iconClasses()" x-html="toggleIcon()">

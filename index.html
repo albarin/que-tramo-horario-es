@@ -43,7 +43,7 @@
 <body x-data="app()" class="font-mono" :class="[slotColor(), textColor()]">
 <div class="relative w-full">
     <div class="absolute top-0 right-0 px-10 py-8">
-        <button class="w-20 h-10 rounded-full bg-white flex items-center transition duration-300 focus:outline-none shadow"
+        <button class="umami--click--toggle-theme w-20 h-10 rounded-full bg-white flex items-center transition duration-300 focus:outline-none shadow"
                 @click="toggleTheme()"
                 aria-label="cambiar tema">
             <span id="switch-toggle"
@@ -71,9 +71,9 @@
 
     <div class="m-2 text-xs text-center">
         <span>
-            Made with 💜 by <a target="_blank" href="https://github.com/albarin/que-tramo-horario-es">Alba</a> in Cornellà de Llobregat 2021</div>
+            Made with 💜 by <a class="umami--click--alba" target="_blank" href="https://github.com/albarin/que-tramo-horario-es">Alba</a> in Cornellà de Llobregat 2021</div>
         </span>
-</div>
+    </div>
 </body>
 
 <script>

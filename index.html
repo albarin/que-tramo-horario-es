@@ -4,6 +4,20 @@
     <meta charset="UTF-8"/>
     <title>Qué tramo horario es?</title>
 
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://quetramohorario.es/">
+    <meta property="og:title" content="¿Qué tramo horario es?">
+    <meta property="og:description" content="Descubre en qué tramo horario estás en la nueva tarifa eléctrica 2.0TD de 2021">
+    <meta property="og:image" content="https://quetramohorario.es/images/valle.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://quetramohorario.es/">
+    <meta property="twitter:title" content="¿Qué tramo horario es?">
+    <meta property="twitter:description" content="Descubre en qué tramo horario estás en la nueva tarifa eléctrica 2.0TD de 2021">
+    <meta property="twitter:image" content="https://quetramohorario.es/images/valle.png">
+
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet"/>
 
@@ -50,7 +64,7 @@
 </body>
 
 <script>
-    const date = new Date
+    const date = new Date('June 11, 2021 13:24:00')
 
     let app = () => {
         return {
@@ -114,10 +128,7 @@
             },
 
             slotEmojiImage() {
-                const slot = this.currentSlot
-                const i = Math.floor(Math.random() * (slot === "valle" ? 6 : 18)) + 1
-
-                return `images/${this.emojis[this.currentSlot]}-${i}.png`
+                return getRandomImagePath(this.emojis, this.currentSlot)
             },
 
             slotDescription() {

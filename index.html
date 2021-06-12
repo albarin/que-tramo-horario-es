@@ -2,12 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
+
     <meta name="description" content="Descubre en qué tramo horario estás en la nueva tarifa eléctrica 2.0TD de 2021">
 
-    <title>Qué tramo horario es?</title>
-    
-    <link rel="icon" href="favicon.ico" type="image/x-icon"/>
-    
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quetramohorario.es/">
@@ -22,8 +19,16 @@
     <meta property="twitter:description" content="Descubre en qué tramo horario estás en la nueva tarifa eléctrica 2.0TD de 2021">
     <meta property="twitter:image" content="images/valle.png">
 
-    <script src="assets/alpine.min.js" defer></script>
+    <title>Qué tramo horario es?</title>
+
+    <link rel="icon" href="favicon.ico" type="image/x-icon"/>
     <link href="assets/tailwind.css" rel="stylesheet"/>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/2.3.0/alpine.js" defer></script>
+    <script src="index.js"></script>
+    <script async defer data-website-id="f9a7d5f5-7e9e-4771-9126-366626e51cd2"
+            src="https://umamistats.herokuapp.com/umami.js" data-domains="quetramohorario.es,www.quetramohorario.es"
+            data-do-not-track="true"></script>
 
     <style>
         .text-large {
@@ -31,10 +36,6 @@
             line-height: 1;
         }
     </style>
-    <script src="index.js"></script>
-    <script async defer data-website-id="f9a7d5f5-7e9e-4771-9126-366626e51cd2"
-            src="https://umamistats.herokuapp.com/umami.js" data-domains="quetramohorario.es,www.quetramohorario.es"
-            data-do-not-track="true"></script>
 </head>
 
 <body x-data="app()" class="font-mono" :class="[slotColor(), textColor()]">
@@ -153,6 +154,7 @@
             },
 
             toggleIcon() {
+                console.log("hola,",this.theme[this.currentTheme()].icon)
                 return this.theme[this.currentTheme()].icon
             },
 

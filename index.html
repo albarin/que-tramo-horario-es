@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Descubre en qué tramo horario estás en la nueva tarifa eléctrica 2.0TD de 2021">
 
     <!-- Open Graph / Facebook -->
@@ -22,18 +22,20 @@
     <title>Qué tramo horario es?</title>
 
     <link rel="icon" href="favicon.ico" type="image/x-icon"/>
-    <link href="assets/tailwind.css" rel="stylesheet"/>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/2.3.0/alpine.js" defer></script>
+    <!-- <link href="assets/tailwind.css" rel="stylesheet"/> -->
+    <link href="assets/tailwind.css" rel="stylesheet">
+    <script src="assets/alpine.min.js" defer></script>
     <script src="index.js"></script>
     <script async defer data-website-id="f9a7d5f5-7e9e-4771-9126-366626e51cd2"
             src="https://umamistats.herokuapp.com/umami.js" data-domains="quetramohorario.es,www.quetramohorario.es"
             data-do-not-track="true"></script>
 
     <style>
-        .text-large {
-            font-size: 14rem;
-            line-height: 1;
+        @media (min-width: 640px) { 
+            .text-large {
+                font-size: 14rem;
+                line-height: 1;
+            }
         }
     </style>
 </head>
@@ -58,12 +60,12 @@
     <div class="flex justify-center h-screen text-center items-center p-4">
         <div>
             <div class="flex justify-center items-center text-center">
-                <img class="inline h-full" :src="slotEmojiImage()" alt="emoji" width="160px" height="160px"/>
-                <span class="text-large" x-text="currentSlot"></span>
+                <img class="inline h-24 sm:h-full w-24 sm:w-auto" :src="slotEmojiImage()" alt="emoji" width="160px" height="160px"/>
+                <span class="text-7xl text-large" x-text="currentSlot"></span>
             </div>
 
-            <p class="mt-10 text-6xl" x-text="slotDescription()"></p>
-            <p class="mt-6 text-3xl" x-text="slotWhen()"></p>
+            <p class="mt-10 text-4xl sm:text-5xl" x-text="slotDescription()"></p>
+            <p class="mt-6 text-md sm:text-3xl" x-text="slotWhen()"></p>
         </div>
     </div>
 </div>

@@ -2,21 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
-    <title>Qué tramo horario es?</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Descubre en qué tramo horario estás en la nueva tarifa eléctrica 2.0TD de 2021">
 
+    <title>Qué tramo horario es?</title>
+    
+    <link rel="icon" href="favicon.ico" type="image/x-icon"/>
+    
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://quetramohorario.es/">
     <meta property="og:title" content="¿Qué tramo horario es?">
     <meta property="og:description" content="Descubre en qué tramo horario estás en la nueva tarifa eléctrica 2.0TD de 2021">
-    <meta property="og:image" content="https://quetramohorario.es/images/valle.png">
+    <meta property="og:image" content="images/valle.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://quetramohorario.es/">
     <meta property="twitter:title" content="¿Qué tramo horario es?">
     <meta property="twitter:description" content="Descubre en qué tramo horario estás en la nueva tarifa eléctrica 2.0TD de 2021">
-    <meta property="twitter:image" content="https://quetramohorario.es/images/valle.png">
+    <meta property="twitter:image" content="images/valle.png">
 
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet"/>
@@ -52,7 +57,7 @@
     <div class="flex justify-center h-screen text-center items-center p-4">
         <div>
             <div class="flex justify-center items-center text-center">
-                <img class="inline h-full" :src="slotEmojiImage()" alt="emoji"/>
+                <img class="inline h-full" :src="slotEmojiImage()" alt="emoji" width="160px" height="160px"/>
                 <span class="text-large" x-text="currentSlot"></span>
             </div>
 

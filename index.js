@@ -56,3 +56,9 @@ const isWeekend = (day) => {
 const darkMode = (hour) => {
     return (hour >= 19 && hour <= 23) || (hour >= 0 && hour <= 6)
 }
+
+const getRandomImagePath = (emojis, slot) => {
+    const i = Math.floor(Math.random() * (slot === "valle" ? 6 : 18)) + 1
+
+    return `images/${emojis[slot]}-${i}.png`
+}

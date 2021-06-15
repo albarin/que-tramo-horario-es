@@ -23,6 +23,7 @@
 
     <link rel="icon" href="favicon.ico" type="image/x-icon"/>
     <link href="assets/tailwind.css" rel="stylesheet">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 
     <script src="assets/alpine.min.js" defer></script>
     <script src="index.js"></script>
@@ -58,16 +59,49 @@
     </div>
 
     <div class="flex justify-center h-screen text-center items-center p-4">
-        <div>
+        <div class="flex flex-col items-center">
             <div class="flex justify-center items-center text-center">
                 <img class="inline h-24 sm:h-full w-24 sm:w-auto" :src="slotEmojiImage()" alt="emoji" width="160px" height="160px"/>
-                <span class="text-7xl text-large" x-text="currentSlot"></span>
+                <span class="text-7xl text-large" x-text="currentSlot"></span>    
+            </div>
+            
+            <div class="mt-10 leading-8 bg-blue-400 rounded-md py-2 px-3">
+                <span class="bg-green-800 rounded w-6 h-6 text-center text-gray-200 text-sm px-2 py-1" :class="isNow(1)">1</span>
+                <span class="bg-green-800 rounded w-6 h-6 text-center text-gray-200 text-sm px-2 py-1" :class="isNow(2)">2</span>
+                <span class="bg-green-800 rounded w-6 h-6 text-center text-gray-200 text-sm px-2 py-1" :class="isNow(3)">3</span>
+                <span class="bg-green-800 rounded w-6 h-6 text-center text-gray-200 text-sm px-2 py-1" :class="isNow(4)">4</span>
+                <span class="bg-green-800 rounded w-6 h-6 text-center text-gray-200 text-sm px-2 py-1" :class="isNow(5)">5</span>
+                <span class="bg-green-800 rounded w-6 h-6 text-center text-gray-200 text-sm px-2 py-1" :class="isNow(6)">6</span>
+                <span class="bg-green-800 rounded w-6 h-6 text-center text-gray-200 text-sm px-2 py-1" :class="isNow(7)">7</span>
+                <span class="bg-green-800 rounded w-6 h-6 text-center text-gray-200 text-sm px-2 py-1" :class="isNow(8)">8</span>
+
+                <span class="bg-yellow-500 rounded w-6 h-6 text-center text-gray-700 text-sm px-2 py-1" :class="isNow(9)" >9</span>
+                <span class="bg-yellow-500 rounded w-6 h-6 text-center text-gray-700 text-sm px-1 py-1" :class="isNow(10)">10</span>
+
+                <span class="bg-red-800 rounded w-6 h-6 text-center text-gray-200 text-sm px-1 py-1" :class="isNow(11)">11</span>
+                <span class="bg-red-800 rounded w-6 h-6 text-center text-gray-200 text-sm px-1 py-1" :class="isNow(12)">12</span>
+                <span class="bg-red-800 rounded w-6 h-6 text-center text-gray-200 text-sm px-1 py-1" :class="isNow(13)">13</span>
+                <span class="bg-red-800 rounded w-6 h-6 text-center text-gray-200 text-sm px-1 py-1" :class="isNow(14)">14</span>
+
+                <span class="bg-yellow-500 rounded w-6 h-6 text-center text-gray-700 text-sm px-1 py-1" :class="isNow(15)">15</span>
+                <span class="bg-yellow-500 rounded w-6 h-6 text-center text-gray-700 text-sm px-1 py-1" :class="isNow(16)">16</span>
+                <span class="bg-yellow-500 rounded w-6 h-6 text-center text-gray-700 text-sm px-1 py-1" :class="isNow(17)">17</span>
+                <span class="bg-yellow-500 rounded w-6 h-6 text-center text-gray-700 text-sm px-1 py-1" :class="isNow(18)">18</span>
+
+                <span class="bg-red-800 rounded w-6 h-6 text-center text-gray-200 text-sm px-1 py-1" :class="isNow(19)">19</span>
+                <span class="bg-red-800 rounded w-6 h-6 text-center text-gray-200 text-sm px-1 py-1" :class="isNow(20)">20</span>
+                <span class="bg-red-800 rounded w-6 h-6 text-center text-gray-200 text-sm px-1 py-1" :class="isNow(21)">21</span>
+                <span class="bg-red-800 rounded w-6 h-6 text-center text-gray-200 text-sm px-1 py-1" :class="isNow(22)">22</span>
+
+                <span class="bg-yellow-500 rounded w-6 h-6 text-center text-gray-700 text-sm px-1 py-1" :class="isNow(23)">23</span>
+                <span class="bg-green-800 rounded w-6 h-6 text-center text-gray-200 text-sm px-2 py-1" :class="isNow(0)">0</span>
             </div>
 
             <p class="mt-10 text-4xl sm:text-5xl" x-text="slotDescription()"></p>
             <p class="mt-6 text-md sm:text-3xl" x-text="slotWhen()"></p>
         </div>
     </div>
+
 
     <div class="m-2 text-xs text-center">
         <span>
@@ -171,6 +205,21 @@
             toggleTheme() {
                 this.theme.darkMode = !this.theme.darkMode
             },
+
+            isNow(hour) {
+                const date = new Date
+                let weekend = ""
+
+                if (isWeekend(date.getDay())) {
+                    weekend += " bg-green-800 text-yellow-50"
+                }
+
+                if (date.getHours() === hour) {
+                    return "border-4 border-green-300" + weekend
+                }
+
+                return weekend
+            }
         };
     };
 </script>

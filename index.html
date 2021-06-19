@@ -99,6 +99,8 @@
 
             <p class="mt-10 text-4xl sm:text-5xl" x-text="slotDescription()"></p>
             <p class="mt-6 text-md sm:text-3xl" x-text="slotWhen()"></p>
+
+            <button class="mt-20 text-sm sm:text-2xl rounded-full bg-blue-400 py-2 px-4 text-gray-700" @click="share()" x-show="navigator.share">Compartir</button>
         </div>
     </div>
 
@@ -219,6 +221,23 @@
                 }
 
                 return weekend
+            },
+
+            share() {
+                if (navigator.share) {
+                    navigator.share({
+                        title: 'Que tramo horario es?',
+                        text: 'Descubre en qué tramo horario estás en la nueva tarifa eléctrica 2.0TD de 2021',
+                        url: window.location.href
+                    }).then(() => {
+                        console.log('Thanks for sharing!');
+                    })
+                    .catch(err => {
+                        console.log(`Couldn't share because of`, err.message);
+                    });
+                } else {
+                    console.log('web share not supported');
+                }
             }
         };
     };
